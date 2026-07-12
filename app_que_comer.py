@@ -1,7 +1,6 @@
 import random 
 import time
 
-
 comidas = [""]
 def menu(comidas):
     print("------------------- MENU -------------------")
@@ -32,9 +31,9 @@ def menu(comidas):
     if op == 3:
         print("Saliendo del programa.")
         time.sleep(1)
-        print("..")
+        print("saliendo del programa..")
         time.sleep(1)
-        print("...")
+        print("saliendo del programa...")s
     
 
 def opcion1(): 

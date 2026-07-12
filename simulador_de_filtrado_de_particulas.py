@@ -91,26 +91,32 @@ for i in range (0,numero_compuertas):
             tipo_de_compuertas = str ( input ("Intentalo de nuevo: ") )
     compuertas.append(tipo_de_compuertas)
 
+
+compuerta = ""
 for letra in compuertas:
         if letra == "A":
             energia_actual,energia_impulso = compuerta_tipo_A (energia_actual,energia_impulso)
             if energia_actual <= 0:
+                compuerta = "A"
                 print("La particula no sobrevivio...")
                 print("Cargando detalles...")
                 time.sleep(3)
                 print(f"""Detalles Finales: 
-                - La Energia (E) quedo en: {energia_actual}J
+            - La Energia (E) quedo en: {energia_actual}J
+            La Particula Murio en la Compuerta "{compuerta}"
                 """)
                 break
 
         elif letra == "P":
             energia_actual = compuerta_tipo_P (energia_actual,energia_freno)
             if energia_actual <= 0 or 1<= energia_actual <= 5:
+                compuerta = "P"
                 print("La particula no sobrevivio...")
                 print("Cargando detalles...")
                 time.sleep(3)
                 print(f"""Detalles Finales: 
-                - La Energia (E) quedo en: {energia_actual}J
+            - La Energia (E) quedo en: {energia_actual}J
+            La Particula Murio en la Compuerta "{compuerta}"
                 """)
                 particula = False
                 break
@@ -118,11 +124,13 @@ for letra in compuertas:
         elif letra == "R":
             energia_actual1 = compuerta_tipo_R (energia_actual)
             if energia_actual1 <= 0:
+                compuerta = "R"
                 print("La particula no sobrevivio...")
                 print("Cargando detalles...")
                 time.sleep(3)
                 print(f"""Detalles Finales: 
-                - La Energia (E) quedo en: {energia_actual1}J
+            - La Energia (E) quedo en: {energia_actual1}J
+            La Particula Murio en la Compuerta "{compuerta}"
                 """)
                 break
 
@@ -133,6 +141,6 @@ if energia_actual>0 and particula == True:
     print("Cargando detalles...")
     time.sleep(3)
     print(f"""Detalles Finales: 
-    - La Energia (E) quedo en: {energia_actual}J
-    Felicidades.
+- La Energia (E) quedo en: {energia_actual}J
+Felicidades.
     """)
