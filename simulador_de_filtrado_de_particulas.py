@@ -1,5 +1,12 @@
 import time
 
+def detalles (energia_actual):
+    print("Procesando...")
+    time.sleep(3)
+    print(f"La energia de salida Fue: {energia_actual}")
+    print()
+
+
 energia_cinetica = float ( input("Ingresa la Energia Cinetica (Ec) en unidade Joules (J):\n") )
 
 energia_inicial = float ( input("Ingresa la Energia Inicial (Eo)\n") )
@@ -9,6 +16,7 @@ while True:
         energia_inicial = float ( input("Ingresa la Energia Inicial (Eo) Correctamente:\n") )
     else:
         break
+    
 energia_actual = energia_inicial
 
 trabajo_disipado = float ( input("Ingresa el Trabajo Disipado (Wdisipado) :\n") )
@@ -30,10 +38,7 @@ def compuerta_tipo_A(energia_actual,energia_impulso):
         #si no es <15 entonces se le suma Eimp
         energia_actual = energia_actual + energia_impulso
 
-    print("Procesando...")
-    time.sleep(3)
-    print(f"La energia de salida Fue: {energia_actual}")
-    print()
+    detalles(energia_actual)
     
     return energia_actual,energia_impulso
 
@@ -45,10 +50,7 @@ def compuerta_tipo_P(energia_actual, energia_freno):
 
     energia_actual = energia_actual - energia_freno
     
-    print("Procesando...")
-    time.sleep(3)
-    print(f"La energia de salida Fue: {energia_actual}")
-    print()
+    detalles(energia_actual)
 
     return energia_actual
 
@@ -63,10 +65,7 @@ def compuerta_tipo_R(energia_actual):
         #sino se le resta 5
         energia_actual = energia_actual - 5.0
     
-    print("Procesando...")
-    time.sleep(3)
-    print(f"La energia de salida Fue: {energia_actual}")
-    print()
+    detalles(energia_actual)
         
     return energia_actual
 
@@ -81,8 +80,11 @@ print(""""RECUERDA que las compuertas son:
       - P (pasiva/freno).
       - R (resonante).
  """)
+
+print("Ingresa SOLO la(s) letra(s) de la compuerta(s) en mayusculas: ")
+
 for i in range (0,numero_compuertas):
-    tipo_de_compuertas = str ( input ("Ingresa SOLO la letra de la compuerta en mayusculas: ") )
+    tipo_de_compuertas = str ( input ("") )
     while True:
         if tipo_de_compuertas == "A" or tipo_de_compuertas == "P" or tipo_de_compuertas == "R":
             break
@@ -90,6 +92,8 @@ for i in range (0,numero_compuertas):
             print("ERROR, Esa compuerta no existe...")
             tipo_de_compuertas = str ( input ("Intentalo de nuevo: ") )
     compuertas.append(tipo_de_compuertas)
+
+print()
 
 
 compuerta = ""
@@ -141,6 +145,6 @@ if energia_actual>0 and particula == True:
     print("Cargando detalles...")
     time.sleep(3)
     print(f"""Detalles Finales: 
-- La Energia (E) quedo en: {energia_actual}J
+- La Energia (E) quedo en: {energia_actual}J -
 Felicidades.
     """)
