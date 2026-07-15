@@ -1,3 +1,5 @@
+#investigar try catch para delimitar ingresos
+
 def Area_Trapecio():
 
     respuesta = input("""Tienes Altura(a), Base Mayor(c) y Base Menor(b)?
@@ -51,16 +53,16 @@ Responde si/no:\n""").lower()
                 break
         
         while True:
-            if b>m:
-                print("ERROR: Base Menor no puede ser mayor a Base Mediana...")
+            if b>m or b==m:
+                print("ERROR: Base Menor no puede ser mayor o igual a Base Mediana...")
                 m = float(input("Vuelve a ingresar Base Mediana(m)"))
             else:
                 break
 
         c = (2*m)-b
         while True:
-            if b>c:
-                print("ERROR: Base Menor no puede ser mayor a Base Mayor...")
+            if b>c or b==c:
+                print("ERROR: Base Menor no puede ser mayor o igual a Base Mayor...")
                 c = float(input("Vuelve a ingresar Base Mediana(m) para calcular Base Mayor(c):  "))
                 c = (2*m)-b
             else:
