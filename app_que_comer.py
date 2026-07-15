@@ -3,6 +3,7 @@ import time
 
 comidas = [""]
 def menu(comidas):
+    flag = False
     print("------------------- MENU -------------------")
     print("""
     1. Ingresar comidas a la lista
@@ -15,7 +16,7 @@ def menu(comidas):
  
 """)
     op = int(input("Ingresa alguna opcion:\n"))
-    while True:
+    while flag == False:
         if op == 1 or op == 2 or op == 3:
             break
         else:
@@ -33,8 +34,8 @@ def menu(comidas):
         time.sleep(1)
         print("saliendo del programa..")
         time.sleep(1)
-        print("saliendo del programa...")s
-    
+        print("saliendo del programa...")
+        flag = True
 
 def opcion1(): 
     comidas = []
@@ -51,7 +52,7 @@ def opcion1():
     return comidas
 
 def opcion2(comidas):
-    if comidas == [""]:
+    if comidas == []:
         print("No hay comidas disponibles en la lista...\n")
         menu(comidas)
     else:
