@@ -1,7 +1,7 @@
 import random 
 import time
 
-comidas = [""]
+comidas = []
 def menu(comidas):
     flag = False
     print("------------------- MENU -------------------")
@@ -65,7 +65,7 @@ def opcion2(comidas):
             if eleccion == "si" or eleccion == "no":
                 break
             else:
-                eleccion = str(input("Ingresa la opcion (si o no) correctamente:\n"))
+                eleccion = str(input("Ingresa la opcion (si o no) correctamente:\n")).lower()
         
         if eleccion == "si":
             print("\nOpcion 2:",random.choice(comidas))

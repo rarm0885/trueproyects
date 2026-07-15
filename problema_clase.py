@@ -14,3 +14,9 @@ for i in range (0,6):
     """)
     año = año + 1
 
+
+print()
+print("-"*68)
+print(f"|{'Ano':<6}|{'Depreciacion':<14}|{'Depreciacion Acumulada':<24}|{'Valor del Anual':<12}|")
+print("-"*68)
+print(f"|{año:<6}|{depreciacion:<14}|{depreciacion_acumulada:<24}|{valor_anual:<12}|")
