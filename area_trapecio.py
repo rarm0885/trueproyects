@@ -2,9 +2,21 @@
 
 def Area_Trapecio():
 
-    respuesta = input("""Tienes Altura(a), Base Mayor(c) y Base Menor(b)?
+    while True:
+        
+        
+        try:
+            respuesta = input("""Tienes Altura(a), Base Mayor(c) y Base Menor(b)?
 Responde si/no\n""").lower()
+            break
+        
+        except ValueError:
+            print()
+            print("ERROR: Los valores  ingresados no son validos...")
+            print("Vuelve a intentarlo:\n")
 
+
+    
     while True:
         if respuesta == "si" or respuesta == "no":
             break
@@ -16,16 +28,36 @@ Responde si/no:\n""").lower()
     if respuesta == "si":
         print("""Ingresa Altura(a), Base menor(b) y la Base Mayor(m):
 (separa los datos con espacios...)""")
-        a, b, c = map(float,input().split())
+        
         while True:
-            if a<1 or b<1 or c<1:
-                print("ERROR: Los datos no pueden ser menor a 1...")
-                print("""Ingresa Altura(a), Base menor(b) y la Base Mayor(m):
-(separa los datos con espacios...)\n""")
-                a, b, c = map(float,input().split())
             
-            else:
+            
+            try:
+                a, b, c = map(float,input().split())
                 break
+
+            except ValueError:
+                print()
+                print("ERROR: Los valores  ingresados no son validos...")
+                print("Vuelve a intentarlo:\n")
+       
+       
+        while True:
+            
+            try:
+                if a<1 or b<1 or c<1:
+                    print("ERROR: Los datos no pueden ser menor a 1...")
+                    print("""Ingresa Altura(a), Base menor(b) y la Base Mayor(m):
+    (separa los datos con espacios...)\n""")
+                    a, b, c = map(float,input().split())
+                
+                else:
+                    break
+
+            except ValueError:
+                print()
+                print("ERROR: Los valores  ingresados no son validos...")
+                print("Vuelve a intentarlo:\n")
                 
         while True:
             if b>c:
@@ -35,14 +67,28 @@ Responde si/no:\n""").lower()
                 break
         area_trapecio = ((c+b)*a)/2
         print(f"""El Area de tu Trapecio es:
-    Area = {area_trapecio}""")
+Area = {area_trapecio}""")
 
 
     elif respuesta == "no":
         print("""Ingresa Altura(a), Base menor(b) y la Base mediana(m):
 (separa los datos con espacios...)\n""")
-        a, b, m = map(float,input().split())
-        while True:
+        
+    while True: 
+        try:
+            a, b, m = map(float,input().split())
+            break
+        
+        except ValueError:
+            print()
+            print("ERROR: Los valores  ingresados no son validos...")
+            print("Vuelve a intentarlo:\n")
+        
+        
+    while True:
+            
+            
+        try:
             if a<1 or b<1 or m<1:
                 print("ERROR: Los datos no pueden ser menor a 1...")
                 print("""Ingresa Altura(a), Base menor(b) y la Base Mayor(m):
@@ -51,6 +97,12 @@ Responde si/no:\n""").lower()
             
             else:
                 break
+            
+        except ValueError:
+            print()
+            print("ERROR: Los valores  ingresados no son validos...")
+            print("Vuelve a intentarlo:\n")
+
         
         while True:
             if b>m or b==m:
@@ -84,16 +136,35 @@ def menu():
     print("2. Salir.")
     print()
 
-    eleccion = int(input("Ingresa alguna opcion (1 o 2):\n"))
     while True:
-        if eleccion == 1 or eleccion == 2:
+
+
+        try:
+            eleccion = int(input("Ingresa alguna opcion (1 o 2):\n"))
             break
-        else:
-            print("ERROR: La opcion ingresada no existe...")
-            eleccion = input("Ingresa alguna opcion (1 o 2):\n")
+
+        except ValueError:
+            print()
+            print("ERROR: Los valores  ingresados no son validos...")
+            print("Vuelve a intentarlo:\n")
+
+
+    while True:
+        try:
+            if eleccion == 1 or eleccion == 2:
+                break
+            else:
+                print("ERROR: La opcion ingresada no existe...")
+                eleccion = input("Ingresa alguna opcion (1 o 2):\n")
+        
+        except ValueError:
+            print()
+            print("ERROR: Los valores  ingresados no son validos...")
+            print("Vuelve a intentarlo:\n")
     
     if eleccion == 1:
         Area_Trapecio()
+
     elif eleccion == 2:
         print("Saliendo...")
         print("Exitos... Que te vaya muy bien.")
