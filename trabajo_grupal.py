@@ -49,7 +49,7 @@ def calcularPeso():#
     gravedadMs2 = float(input("Ingresa la gravedad en M/s2:  "))
 
     con=0
-    amplitud =masakg*gravedadMs2
+    amplitud = masakg*gravedadMs2
 
     if masakg <=0:
         return "la masa no puede ser menor o igual a 0"
@@ -239,7 +239,7 @@ def CalcularTrabajo():#
 def menu():
     print()
     print("*"*30)
-    print("PROGRAMA DE FISICA")
+    print(f"{'PROGRAMA DE FISICA':^30}")
     print("*"*30)
     print()
     print("1. Calcular Aceleracion.")
