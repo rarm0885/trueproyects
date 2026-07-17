@@ -21,7 +21,7 @@ def calcularAceleracion():#
 def calcularPresion():#
     #JacoboGonzalezMurillo
     fuerzaNewtons = float(input("Ingresa la Fuerza en Newtons:  "))
-    areaM2 = float(input("Ingresa el Area en M2"))
+    areaM2 = float(input("Ingresa el Area en M2:  "))
     if areaM2>0:
         Presion= fuerzaNewtons/areaM2
         return Presion
@@ -49,15 +49,14 @@ def calcularPeso():#
     gravedadMs2 = float(input("Ingresa la gravedad en M/s2:  "))
 
     con=0
-    mensaje_error=("la masa no puede ser menor o igual a 0")
-    mensaje_error2=("la gravedad no puede ser negativa")
-    A=masakg*gravedadMs2
-    amplitud=("la fuerza de atraccion del planeta es", A)
+    amplitud =masakg*gravedadMs2
+
     if masakg <=0:
-        return mensaje_error
-    if gravedadMs2<=0:
-        return mensaje_error2
-    return amplitud
+        return "la masa no puede ser menor o igual a 0"
+    elif gravedadMs2<=0:
+        return "la gravedad no puede ser negativa"
+    else:
+        return amplitud
 
 def calcularPotencia():#
     # Daniel Romero 
@@ -78,7 +77,7 @@ def calcularPotencia():#
 def calcularEnergiaCinetica():#
     #juan ortiz
     masakg = float(input("Ingresa la masa en KG:  "))
-    velocidadMs = float(input("Ingresa la velocidad en Ms"))
+    velocidadMs = float(input("Ingresa la velocidad en Ms:  "))
 
     EnergiaI = 0
     if masakg <0  or velocidadMs <0:
@@ -152,7 +151,7 @@ def calcularCostoElectrico():#
     #John Alejandro Reyes Isaza
     potenciaWatts = float(input("Ingresa la Potencia en Watts:  "))
     horas = float(input("Ingresa las Horas:  "))
-    precioKwh = float(input("Ingresa el Precio en KwH"))
+    precioKwh = float(input("Ingresa el Precio en KwH:  "))
     # Convertir potencia de watts a kilowatts
     potenciaKw = potenciaWatts / 1000
     
@@ -187,7 +186,7 @@ def calcular_fuerza():#
         # Multiplicamos la masa por la aceleración para obtener la fuerza
         fuerzaN = masaKG * aceleracionms2  
         # Devolvemos la fuerza calculada junto con los valores de entrada
-        return fuerzaN, masaKG, aceleracionms2    
+        return fuerzaN   
     else:
         print("Error: La masa y la aceleración deben ser valores positivos mayores que cero.")
     
@@ -214,10 +213,10 @@ def calcularFriccion ():#
         fuerzaNormal = masa * 9.8 # Calcular la fuerza normal
         if (coeficienteFriccion >= 0 and coeficienteFriccion <= 1) or fuerzaNormal>0:
             resistencia = coeficienteFriccion * fuerzaNormal # se calcula la resistencia
-            print ("La resistencia es: ",resistencia,"")
             return resistencia
+
         else:
-            print ("Dato erroneo, porfavor ingrese los valores correctos")
+            return ("Dato erroneo, porfavor ingrese los valores correctos")
 
 
 def CalcularTrabajo():#
@@ -283,7 +282,7 @@ def menu():
         print()
         print(f"Este es tu resultado :{calcular_aceleracion}")
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
 
     elif eleccion == 2:
@@ -292,7 +291,7 @@ def menu():
         print()
         print(f"Este es tu resultado :{calcular_presion}")
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
 
     elif eleccion == 3:
@@ -301,7 +300,7 @@ def menu():
         print()
         print(f"Este es tu resultado :{calcular_caudal}")
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 4:
@@ -310,7 +309,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_peso)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 5:
@@ -319,7 +318,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_potencia)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 6:
@@ -328,7 +327,7 @@ def menu():
         print()
         print("Este es tu resultado: ",energia_cinetica)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
 
     elif eleccion == 7:
@@ -337,7 +336,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_densidad)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
 
     elif eleccion == 8:
@@ -346,7 +345,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_distancia)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
 
     elif eleccion == 9:
@@ -355,7 +354,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_velocidad)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 10:
@@ -364,7 +363,7 @@ def menu():
         print()
         print("Este es tu resultado en grados Kelvin: ",convertir_c_k)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 11:
@@ -373,7 +372,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_costo_electrico)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 12:
@@ -382,7 +381,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcularFuerza)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 13:
@@ -391,7 +390,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_tiempo)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
 
     elif eleccion == 14:
@@ -400,7 +399,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_friccion)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 15:
@@ -409,7 +408,7 @@ def menu():
         print()
         print("Este es tu resultado: ",calcular_trabajo)
         print()
-        time.sleep(3)
+        time.sleep(5)
         menu()
     
     elif eleccion == 16:
