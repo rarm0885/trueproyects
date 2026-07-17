@@ -1,4 +1,5 @@
 #investigar try catch para delimitar ingresos
+#investigar Snippets
 
 def Area_Trapecio():
 
@@ -16,7 +17,6 @@ Responde si/no\n""").lower()
             print("Vuelve a intentarlo:\n")
 
 
-    
     while True:
         if respuesta == "si" or respuesta == "no":
             break
