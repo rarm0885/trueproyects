@@ -11,8 +11,8 @@ def add(num1,num2):
 
 def execute():
     try:
-        num1 = int(input1.get())
-        num2 = int(input2.get())
+        num1 = float(input1.get())
+        num2 = float(input2.get())
     except ValueError:
         result.config(text=f"ERROR: No se pueden ingresar strings...",fg="red")
 
