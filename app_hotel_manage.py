@@ -49,23 +49,28 @@ def save_user():
     try:
         length_of_stay = int(length_of_stay)
     except ValueError:
-        messagebox.showwarning("ERROR","Length of stay must be an Integer...")
+        messagebox.showwarning("ERROR","The Field 'Length of stay' must be an Integer...")
         return
 
 
     for letter in full_name:
         for character in "0123456789-_+=!@#$%^&*():;?/>.<,|":
             if letter == character:
-                messagebox.showerror("ERROR","You can't fill the field Full Name with Special Characters or Special Symbols...")
+                messagebox.showerror("ERROR","You can't fill the field 'Full Name' with Special Characters or Special Symbols...")
                 return
 
+    if len(full_name) < 2:
+        messagebox.showerror("ERROR","The Field 'Full Name' Must Have More than Two Letters...")
 
     try:
-        user_id = int(user_id)
+        user_id = int(user_id) 
     except ValueError:
-        messagebox.showerror("ERROR","You can't fill the field ID with Special Characters or Letters...")
+        messagebox.showerror("ERROR","You can't fill the field 'ID' with Special Characters or Letters...")
         return
 
+    if length_of_stay == 0:
+        messagebox.showerror("ERROR","The field 'ID' is Empty...")
+        return
 
     user_data = {
         "Full Name": full_name,
@@ -81,6 +86,7 @@ def save_user():
     if any(user["ID"] == user_id for user in data_base):
         messagebox.showwarning("ERROR","This User is already signed into the Data Base...")
         return
+
 
     total = calculate_total(user_data)
     totals.append(total)
@@ -101,7 +107,6 @@ def update_user_list():
         bold_map = str.maketrans("0123456789", "𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵")
         user_info = (f"{str(i+1).translate(bold_map)}. - ID: {user['ID']} - Name: {user['Full Name']} - Total: {totals[i]}$ -")
 
-        # Inserta cada linea formateada en el Listbox
         user_list.insert(tk.END, user_info)
 
 
@@ -168,7 +173,7 @@ style_check = {
 
 
 
-# Entrada para Nombre Completo
+
 tk.Label(main_window, text="Full Name:", **style_label).pack(pady=5)
 name = tk.Entry(main_window, **style_entry)
 name.pack(pady=5)
@@ -210,7 +215,7 @@ happy_massage = tk.BooleanVar(value=False)
 tk.Checkbutton(main_window, text="Premium BreakFast (+30.99$/day)", variable=breakfast, **style_check).pack(anchor=tk.W, padx=20)
 tk.Checkbutton(main_window, text="Exclusive Parking Slot (+25$/day)", variable=parking_slot, **style_check).pack(anchor=tk.W, padx=20)
 tk.Checkbutton(main_window, text="Helicopter Transport Ultimate Deluxe Service (+4500$/day)", variable=helicopter_service, **style_check).pack(anchor=tk.W, padx=20)
-tk.Checkbutton(main_window, text="Happy Ending Massages Premium Service (250$/day)", variable=happy_massage, **style_check).pack(anchor=tk.W, padx=20)
+tk.Checkbutton(main_window, text="Happy Ending Massages Premium Service (+250$/day)", variable=happy_massage, **style_check).pack(anchor=tk.W, padx=20)
 
 
 
