@@ -110,7 +110,7 @@ def MeterUsuariosIngresados(lista_entregas):
         return
 
     entrega_actual = lista_entregas[0]
-    linea = f"C.C: ${entrega_actual['C.C']} | Material: {entrega_actual['Tipo Material']} | Kg: {entrega_actual['Kg']} | Total: ${entrega_actual['Total']}"
+    linea = f"C.C: {entrega_actual['C.C']} | Material: {entrega_actual['Tipo Material']} | Kg: {entrega_actual['Kg']} | Total: ${entrega_actual['Total']}"
     UsuariosIngresados.insert(tk.END,linea)   # agrega la fila al final del listbox
     
     MeterUsuariosIngresados(lista_entregas[1:])
@@ -298,7 +298,7 @@ MainWindow.minsize(AnchoMinimo,AltoMinimo)
 MainWindow.maxsize(AnchoMinimo,AltoMinimo)
 
 MainWindow.bind("<Escape>", lambda event: MainWindow.attributes("-fullscreen",False))#Configutra una tecla para cu,plir una funcion
-MainWindow.bind("<Return>", lambda event: verificaciones())
+MainWindow.bind("<Return>", lambda event: verificaciones())#hace que al darle a la tecla return se llene el formulario
 
 
 
