@@ -1,3 +1,0 @@
-([('app_hotel_manage',
-   '/Users/rarm0885/trueproyects/dist/app_hotel_manage',
-   'EXECUTABLE')],)

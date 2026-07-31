@@ -19,20 +19,20 @@ MontosEntregados = []
 
 def verificaciones():
             
-    HasCedula = cedula.get()
-    HasTipoDeMaterial = TipoDeMaterial.get()
-    HasTipoDeMaterial = HasTipoDeMaterial.lower()
-    HasKg = kg.get()
-    HasTarifaPorKg = TarifaPorKg.get()
+    HasCedula = cedula.get().strip()
+    HasTipoDeMaterial = TipoDeMaterial.get().strip()
+    HasTipoDeMaterial = HasTipoDeMaterial.lower().strip()
+    HasKg = kg.get().strip()
+    HasTarifaPorKg = TarifaPorKg.get().strip()
+
     HasMaterialVerificado = MaterialClasificado.get()
 
     if not HasCedula or not HasTipoDeMaterial or not HasKg or not HasTarifaPorKg:
-        return messagebox.showwarning("ERROR","Tienes que rellenar todos los campos para continuar...")
+        messagebox.showwarning("ERROR","Tienes que rellenar todos los campos para continuar...")
+        return
         
-    try:
-        HasCedula = int(HasCedula)
-    except ValueError:
-        messagebox.showerror("ERROR","El campo 'C.C' debe ser rellenado solo con numeros...")
+    if not HasCedula.isdigit():
+        messagebox.showerror("ERROR", "El campo 'C.C' debe contener solo números enteros...")
         return
     
     if len(str(HasCedula))<5 or len(str(HasCedula))>10:
@@ -40,13 +40,20 @@ def verificaciones():
         return
 
     try:
-        HasKg = int(HasKg)
+        HasKg = float(HasKg)
+        if HasKg <= 0:
+            messagebox.showerror("ERROR","No puedes rellenar el campo 'Cantidad Kg' con cero, o numeros negativos")
+            return 
+        
     except ValueError:
-        messagebox.showerror("ERROR","El campo 'Kg' debe ser rellenado solo con numeros...")
+        messagebox.showerror("ERROR","El campo 'Cantidad Kg' debe ser rellenado solo con numeros...")
         return
 
     try:
-        HasTarifaPorKg = int(HasTarifaPorKg)
+        HasTarifaPorKg = float(HasTarifaPorKg)
+        if HasTarifaPorKg <= 0:
+            messagebox.showerror("ERROR","No puedes rellenar el campo 'Tarifas por Kilo' con cero, o numeros negativos")
+            return
     except ValueError:
         messagebox.showerror("ERROR","El campo 'Tarifa por Kg' debe ser rellenado solo con numeros...")
         return
@@ -191,14 +198,14 @@ def sumar_kilos_por_material(lista_entregas, tipo_material):
 def consultar_usuario():
 
     try:
-        cc_a_buscar = simpledialog.askinteger("Consulta","Ingrese la Cedula de Ciudadania (C.C) a buscar:")
+        cc_a_buscar = simpledialog.askstring("Consulta","Ingrese la Cedula de Ciudadania (C.C) a buscar:")
     except ValueError:
         return messagebox.showwarning("ERROR","La Cedula de Ciudadania (C.C) no puede contener letras...")
 
     if cc_a_buscar == None:
         return
 
-    if len(str(cc_a_buscar)) < 5 or len(str(cc_a_buscar)) >10:
+    if len(cc_a_buscar) < 5 or len(cc_a_buscar) >10:
         messagebox.showwarning("ERROR","La Cedula de Ciudadania (C.C) tiene que tener como minimo 5 digitos o maximo 10 digitos...")
         return
     
@@ -291,7 +298,7 @@ MainWindow.configure(background="#E9ECEF")
 
 MainWindow.attributes(fullscreen=True)
 
-AnchoPantalla = MainWindow.winfo_screenmmwidth()#Este pedazo de codigo hace que la ventana se vea igual en cualquier pantalla
+AnchoPantalla = MainWindow.winfo_screenwidth()#Este pedazo de codigo hace que la ventana se vea igual en cualquier pantalla
 AltoPantalla = MainWindow.winfo_screenheight()
 AnchoMinimo = int(AnchoPantalla * 3)
 AltoMinimo = int(AltoPantalla * 0.9)

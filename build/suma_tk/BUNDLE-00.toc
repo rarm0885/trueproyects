@@ -1,1 +1,0 @@
-([('suma_tk', '/Users/rarm0885/trueproyects/dist/suma_tk', 'EXECUTABLE')],)
