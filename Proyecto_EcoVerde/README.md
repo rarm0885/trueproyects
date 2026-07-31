@@ -17,15 +17,12 @@ Por regla estricta del proyecto, no use ciclos `for` ni `while`. Todo el procesa
 
 ---
 
-## Cómo se ejecutarlo?
+## Cómo se ejecuta?
 
 ## 1. Desde la Terminal
 * 1. Abre tu terminal en la carpeta del proyecto.
 * 2. Corre el programa con (teniendo la ruta previamente abierta donde se alojan los archivos en la terminal): 'python3 EcoVerde.py'
 
-## 2. Con el Ejecutable
-* 1. Abre la carpeta 'app_EcoVerde', ahi se encuentran los archivos
-* 2. Si tienes windows abre el archivo '.exe' y si tienes Mac abre el archivo '.app'
 
 ## Notas de uso:
 Una vez dentro del programa aunque empieza en pantalla completa, si no es de tu gusto, con la letra 'escape' puede pasar al modo ventana
