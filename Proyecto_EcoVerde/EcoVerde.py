@@ -1,8 +1,10 @@
 #=====================================================================================================================================
 #Aca se importa las libreria Tkinter y Se declaran listas Globales.
 #=====================================================================================================================================
+import os #este os es meramente para que el logo funcione XD
 import tkinter as tk 
 from tkinter import simpledialog, messagebox
+from PIL import Image, ImageTk #Esto porque nada que me salia ese logo en la Mac 🫩
 
 # Listas globales para guardar las entregas y los montos pagados
 lista_entregas = []
@@ -365,7 +367,7 @@ config_entrys = {
 
 config_CheckButtons = {
     "bg": "#F4F7F6",
-    "fg": "#263238",
+    "fg": "#154017",
     "activebackground": "#F4F7F6",
     "font": ("Helvetica", 13, "bold")
 }
@@ -424,17 +426,35 @@ TarifaPorKg.grid(row=3, column=1, padx=(35, 10), pady=(35, 10), sticky="w")
 
 
 #=====================================================================================================================================
-#ACA SE DEFINE EL CHECKBUTTON Material Clasificado Correctamente. Que tambien se pone en (INGRESAR USUARIOS)
+#ACA SE DEFINE EL CHECKBUTTON Material Clasificado Correctamente. Que tambien se pone en (INGRESAR USUARIOS) yyyy EL logo de EcoVerde.
 #=====================================================================================================================================
+
+try:
+    directorio_progama_EcoVerde_py = os.path.dirname(os.path.abspath(__file__))#Busca el directprio donde esta el .py
+    ruta_logo_EcoVerde = os.path.join(directorio_progama_EcoVerde_py, "EcoVerde_Logo.png")
+
+    logo_pil = Image.open (ruta_logo_EcoVerde)
+    logo_pil = logo_pil.resize((300, 100), Image.Resampling.LANCZOS) #Esto redimensiona el logo
+    logo_EcoVerde = ImageTk.PhotoImage(logo_pil)
+
+    label_logo = tk.Label(frame_EntradasUsuario, image=logo_EcoVerde, bg = "#F4F7F6")
+    label_logo.image = logo_EcoVerde #Esto hace que como que no se borre de memoria
+    label_logo.grid(row=0, column=2, columnspan=2, padx=(150, 40), pady=(16,0), sticky="w")
+
+except Exception:
+    pass     #Ese try, el exception y el pass es por si da la casualidad de que no esta la imagen, el programa siga normal  
 
 MaterialClasificado = tk.BooleanVar(value = False)
 tk.Checkbutton(
     frame_EntradasUsuario, 
-    text="Material Clasificado Correctamente (10%): ", 
+    text="Material Clasificado Correctamente (10%)", 
     variable=MaterialClasificado, 
     **config_CheckButtons,
+    highlightthickness=2,
+    highlightbackground="#2E7D32",
+    highlightcolor="#81C784",
     selectcolor="#81C784"
-    ).grid(row=0, column=2, columnspan=2, padx=(120, 20), pady=(35, 10), sticky="w")
+    ).grid(row=1, column=2, columnspan=2, padx=(120, 20), pady=(35, 10), sticky="w")
 
 
 #=====================================================================================================================================
@@ -447,12 +467,12 @@ RegistrarEntrega = tk.Button(
     text="Registrar Entrega", 
     **config_buttons,
     relief = tk.RAISED, 
-    height=3,
-    width=20,
+    height=2,
+    width=15,
     cursor="exchange",
 )
 
-RegistrarEntrega.grid(row=2, column=2, columnspan=2, padx=(120, 20), pady=15)
+RegistrarEntrega.grid(row=3, column=2, columnspan=2, padx=(100, 10), pady=(10, 10))
 RegistrarEntrega.bind("<Button-1>",lambda event: verificaciones())
 
 
@@ -468,7 +488,7 @@ TotalizarPagos = tk.Button(
     command=totalizar
 )
 
-TotalizarPagos.pack(pady= (50, 10))
+TotalizarPagos.pack(pady= (50, 12))
 
 
 #Se agrega abajo de totalizar pagos
@@ -483,7 +503,7 @@ TotalKgPorMaterial = tk.Button(
     command=consultar_material
 )
 
-TotalKgPorMaterial.pack(pady=10)
+TotalKgPorMaterial.pack(pady=12)
 
 #Se agrega abajo de Total Kg por Material
 ConsultarUsuario = tk.Button(
@@ -497,7 +517,7 @@ ConsultarUsuario = tk.Button(
     command=consultar_usuario
 )
 
-ConsultarUsuario.pack(pady=10)
+ConsultarUsuario.pack(pady=12)
 
 
 #=====================================================================================================================================
