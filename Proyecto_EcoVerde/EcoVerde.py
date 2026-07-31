@@ -160,10 +160,10 @@ def totalizar():
 
 # Abre la ventana emergente para pedir el nombre del material a buscar
 def consultar_material():
-    # 1. Pedir el material en la ventana emergente
+    # esto pide el material en una ventana emergente
     material = simpledialog.askstring("Consulta", "Ingrese el material a buscar:")
     
-    # 2. Si el usuario escribió algo y no canceló
+    #Si el usuario llego a escribir algo y no canceló
     if material:
         total = sumar_kilos_por_material(lista_entregas, material.strip().lower())
         messagebox.showinfo("Resultado", f"Total de '{material}': {total} Kg")
@@ -285,10 +285,8 @@ def mostrar_ventana_buscar_cc(cc_a_buscar, total_entregas):
 
 
 #=====================================================================================================================================
-#Este Pedazo de codigo organiza la ventana principal, le da estilo, y hace que empiece fullscreen pero si el usuario
-#decide achicar la ventana no lo deja pasar de ciertos parametros para que no se rompa el GUI. Tambien Arregla errores de 
-#resoluciones y hace que funcione y se vea igual en todas las pantallas. Tambien define que la tecla <escape> sirva para salir de
-#la FullScreen.
+#Este Pedazo de codigo organiza la ventana principal, le da estilo. Tambien Arregla errores de 
+#resoluciones y hace que funcione y se vea igual en todas las pantallas. Tambien define que la tecla <return> sirva para ingresar los usuarios
 #=====================================================================================================================================
 
 MainWindow = tk.Tk()
@@ -296,17 +294,19 @@ MainWindow.title("Centro de Acopio y Reciclaje 'EcoVerde'")
 MainWindow.configure(background="#E9ECEF")
 
 
-MainWindow.attributes(fullscreen=True)
-
 AnchoPantalla = MainWindow.winfo_screenwidth()#Este pedazo de codigo hace que la ventana se vea igual en cualquier pantalla
 AltoPantalla = MainWindow.winfo_screenheight()
-AnchoMinimo = int(AnchoPantalla * 3)
-AltoMinimo = int(AltoPantalla * 0.9)
 
-MainWindow.minsize(AnchoMinimo,AltoMinimo)
-MainWindow.maxsize(AnchoMinimo,AltoMinimo)
+AnchoVentana = int(AnchoPantalla * 0.85)
+AltoVentana = int(AltoPantalla * 0.85)
 
-MainWindow.bind("<Escape>", lambda event: MainWindow.attributes("-fullscreen",False))#Configutra una tecla para cu,plir una funcion
+pos_x = (AnchoPantalla - AnchoVentana) // 2
+pos_y = (AltoPantalla - AltoVentana) // 2
+
+MainWindow.geometry(f"{AnchoVentana}x{AltoVentana}+{pos_x}+{pos_y}")
+MainWindow.minsize(1050,650)
+
+MainWindow.bind("<Escape>", lambda event: MainWindow.attributes('-fullscreen', False))
 MainWindow.bind("<Return>", lambda event: verificaciones())#hace que al darle a la tecla return se llene el formulario
 
 

@@ -21,7 +21,9 @@ Por regla estricta del proyecto, no use ciclos `for` ni `while`. Todo el procesa
 
 ## 1. Desde la Terminal
 * 1. Abre tu terminal en la carpeta del proyecto.
-* 2. Corre el programa con (teniendo la ruta previamente abierta donde se alojan los archivos en la terminal): 'python3 EcoVerde.py'
+* 2. Descarga la Libreria Pillow con: 
+'py -m pip install Pillow'
+* 3. Corre el programa con (teniendo la ruta previamente abierta donde se alojan los archivos en la terminal): 'python3 EcoVerde.py'
 
 
 ## Notas de uso:
